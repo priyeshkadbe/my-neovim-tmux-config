@@ -346,7 +346,8 @@ return {
         "jsonls",
         "marksman",
         "html",
-        "clangd"
+        "clangd",
+        "clang-format"
       },
       automatic_installation = true,
     },
