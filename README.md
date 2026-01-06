@@ -1,35 +1,68 @@
-# My Personal Neovim Setup for Development
+# My Neovim & Tmux Setup 
 
-This is my personal Neovim setup for development, including the following plugins:
+A high-performance, aesthetic development environment for macOS. This repository centralizes my configurations for **AstroNvim** and **Tmux**, specifically optimized for C++ development and a seamless terminal-based workflow.
 
-- [vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [vim-surround](https://github.com/tpope/vim-surround)
-- [nvim-spectre](https://github.com/windwp/nvim-spectre)
-- [formatter.nvim](https://github.com/mhartington/formatter.nvim)
-- [vim-firestore](https://github.com/delphinus/vim-firestore)
-- [alpha-nvim](https://github.com/goolord/alpha-nvim)
-- [presence.nvim](https://github.com/andweeb/presence.nvim)
-- [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)
-- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-- [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-- [fidget.nvim](https://github.com/j-hui/fidget.nvim)
-- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-- [auto-session](https://github.com/rmagatti/auto-session)
-- [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
-- [nvim-code-action-menu](https://github.com/weilbith/nvim-code-action-menu)
-- [trouble.nvim](https://github.com/folke/trouble.nvim)
-- [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
-- [tmux.nvim](https://github.com/aserowy/tmux.nvim)
-- [auto-save.nvim](https://github.com/Pocco81/auto-save.nvim)
-- [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
-- [fleet-theme-nvim](https://github.com/felipeagc/fleet-theme-nvim)
+---
 
-## Installation
+## 📦 What's Inside?
 
-1. Install [Neovim](https://neovim.io/)
-2. Install [vim-plug](https://github.com/junegunn/vim-plug) (if you haven't already)
-3. Clone this repository:
+* **Neovim (`/nvim`)**: A full AstroNvim configuration with LSP support (clangd), Treesitter for syntax highlighting, and the Tokyonight color scheme.
+* **Tmux (`.tmux.conf`)**: A productivity-focused multiplexer config featuring a custom `Ctrl-a` prefix, optimized pane management, and smart navigation.
 
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Install Core Dependencies
+
+Ensure you have [Homebrew](https://brew.sh/) installed, then run the following to install the necessary tools:
 ```bash
-git clone https://github.com/priyeshkadbe/my-neovim-tmux-config.git
+brew install neovim tmux git
+```
+
+### 2. Configure Neovim (AstroNvim)
+
+AstroNvim acts as the IDE engine. Follow these steps to apply my custom settings:
+```bash
+# 1. Backup any existing configuration
+mv ~/.config/nvim ~/.config/nvim.bak
+
+# 2. Clone the official AstroNvim template
+git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
+
+# 3. Copy my custom configuration into the nvim directory
+cp -r ~/my-neovim-tmux-config/nvim/* ~/.config/nvim/
+```
+
+*After copying, launch Neovim (`nvim`) and wait for the automated installer to download plugins and LSPs.*
+
+### 3. Configure Tmux
+
+To enable the custom status bar, themes, and keybindings:
+
+1. **Install Tmux Plugin Manager (TPM):**
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+2. **Apply the configuration file:**
+```bash
+cp ~/my-neovim-tmux-config/.tmux.conf ~/
+```
+
+3. **Install Plugins:**
+
+Open `tmux`, then press `Ctrl + a` followed by `I` (capital I) to fetch and install the plugins listed in the config.
+
+---
+
+## ⌨️ Workflow & Shortcuts
+
+### Tmux Navigation
+
+The prefix is remapped to **`Ctrl + a`** for easier access.
+
+* **Vertical Split**: `Prefix` + `|`
+* **Horizontal Split**: `Prefix` + `-`
+* **Smart Pane Navigation**: Use `Ctrl + h/j/k/l` to move seamlessly between Tmux panes and Neovim windows.
+* **Zoom Pane**: `Prefix` + `z` to toggle full-screen for the active pane.
